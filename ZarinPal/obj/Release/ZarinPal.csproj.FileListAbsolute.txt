@@ -1,0 +1,7 @@
+C:\Users\ImanX\Documents\Visual Studio 2012\Projects\ZarinPal\ZarinPal\obj\Release\ZarinPal.csprojResolveAssemblyReference.cache
+C:\Users\ImanX\Desktop\ZarinPal.dll
+C:\Users\ImanX\Desktop\ZarinPal.pdb
+C:\Users\ImanX\Documents\Visual Studio 2012\Projects\ZarinPal\ZarinPal\obj\Release\ZarinPal.dll
+C:\Users\ImanX\Documents\Visual Studio 2012\Projects\ZarinPal\ZarinPal\obj\Release\ZarinPal.pdb
+C:\Users\ImanX\Documents\ZarinPal.dll
+C:\Users\ImanX\Documents\ZarinPal.pdb
