@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ZarinPal
 {
-   public class Response
+   public class PaymentResponse
     {
         public String Authority { set; get; }
         public int Status { set; get; }

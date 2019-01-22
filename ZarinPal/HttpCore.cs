@@ -26,7 +26,7 @@ namespace ZarinPal
         }
 
 
-        public String get()
+        public String Get()
         {
            
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(this.URL);

@@ -37,20 +37,23 @@ namespace ZarinPal
         }
 
 
-        public Response GetPaymentRequest(PaymentRequest PaymentRequest)
+        public PaymentResponse GetAuthorityPayment(PaymentRequest PaymentRequest)
         {
             _HttpCore.URL = "https://www.zarinpal.com/pg/rest/WebGate/PaymentRequest.json";
             _HttpCore.Method = Method.POST;
             _HttpCore.Raw = PaymentRequest;
-            String response = _HttpCore.get();
+            String response = _HttpCore.Get();
 
             JavaScriptSerializer j = new JavaScriptSerializer();
-            Response _Response = j.Deserialize<Response>(response);
+            PaymentResponse _Response = j.Deserialize<PaymentResponse>(response);
             _Response.URLPayment = "https://www.zarinpal.com/pg/StartPay/"+_Response.Authority;
 
             return _Response;
          
         }
+
+
+       
 
 
 
