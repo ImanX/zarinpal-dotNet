@@ -77,6 +77,9 @@ namespace ZarinPal
 
             JavaScriptSerializer j = new JavaScriptSerializer();
             VerificationResponse verification = j.Deserialize<VerificationResponse>(response);
+            verification.Amount = PaymentRequest.Amount;
+            verification.IsSuccess = true;
+            verification.MerchantID = PaymentRequest.MerchantID;
             return verification;
 
         }
