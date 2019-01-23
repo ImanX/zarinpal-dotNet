@@ -11,12 +11,21 @@ namespace ZarinPal
 
         public bool IsSuccess { get; set; }
         public String Authority { get; set; }
+        public String RefID { get; set; }
+        public int Status { get; set; }
+        public long Amount { get; set; }
+        public String MerchantID { get; set; }
 
+        public VerificationResponse(System.Collections.Specialized.NameValueCollection Collection)
+        {
+            this.IsSuccess = Collection["Status"] == "OK";
+            this.Authority = Collection["Authority"];
 
+        }
 
         public VerificationResponse()
         {
-            this.IsSuccess =
+
         }
     }
 }

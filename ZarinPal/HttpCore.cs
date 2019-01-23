@@ -32,7 +32,7 @@ namespace ZarinPal
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(this.URL);
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = Method.ToString();
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls | SecurityProtocolType.Ssl3;
 
             using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
             {
