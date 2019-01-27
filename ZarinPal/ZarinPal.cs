@@ -17,8 +17,11 @@ namespace ZarinPal
     {
 
 
-        private HttpCore _HttpCore;
+
+
         private static ZarinPal _ZarinPal;
+        private HttpCore _HttpCore;
+        private URLs _Urls;
         public PaymentRequest PaymentRequest { get; private set; }
 
 
@@ -42,7 +45,8 @@ namespace ZarinPal
 
         public PaymentResponse GetAuthorityPayment(PaymentRequest PaymentRequest)
         {
-            _HttpCore.URL = "https://www.zarinpal.com/pg/rest/WebGate/PaymentRequest.json";
+            _Urls = new URLs(PaymentRequest.IsSandBox);
+            _HttpCore.URL = _Urls.GetPaymentRequestURL();
             _HttpCore.Method = Method.POST;
             _HttpCore.Raw = PaymentRequest;
             this.PaymentRequest = PaymentRequest;
@@ -50,7 +54,7 @@ namespace ZarinPal
 
             JavaScriptSerializer j = new JavaScriptSerializer();
             PaymentResponse _Response = j.Deserialize<PaymentResponse>(response);
-            _Response.URLPayment = "https://www.zarinpal.com/pg/StartPay/" + _Response.Authority;
+            _Response.PaymentURL = _Urls.GetPaymenGatewayURL() + _Response.Authority;
 
             return _Response;
         }
@@ -68,7 +72,7 @@ namespace ZarinPal
             _Response.Amount = PaymentRequest.Amount;
             _Response.MerchantID = PaymentRequest.MerchantID;
 
-            _HttpCore.URL = "https://www.zarinpal.com/pg/rest/WebGate/PaymentVerification.json";
+            _HttpCore.URL = _Urls.GetVerificationURL();
             _HttpCore.Method = Method.POST;
             _HttpCore.Raw = _Response;
 
