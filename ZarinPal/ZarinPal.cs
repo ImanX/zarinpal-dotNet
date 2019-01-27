@@ -54,7 +54,7 @@ namespace ZarinPal
 
             JavaScriptSerializer j = new JavaScriptSerializer();
             PaymentResponse _Response = j.Deserialize<PaymentResponse>(response);
-            _Response.PaymentURL = _Urls.GetPaymenGatewayURL() + _Response.Authority;
+            _Response.PaymentURL = _Urls.GetPaymenGatewayURL(_Response.Authority);
 
             return _Response;
         }
