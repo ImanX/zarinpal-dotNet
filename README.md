@@ -37,7 +37,7 @@ Open your project and go to `nuget` then Search `Zarinpal` when found it install
         }
         
         
-       ```
+```
 
 ### Example for Verfication Payment Page:
 ```C#
