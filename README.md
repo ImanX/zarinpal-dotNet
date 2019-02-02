@@ -2,8 +2,10 @@
 
 
 ### Getting Started
-Open your project and go to `nuget` then search `Zarinpal` when found it install library or run command `Install-Package ZarinPal-SDK -Version 0.0.3`
-`
+Open your project and go to `nuget` then search `Zarinpal` when found it install library or run above command 
+
+`>Install-Package ZarinPal-SDK -Version 0.0.3`
+
 
 ### Requirement
  .NET 4.5.1 framework is Require
