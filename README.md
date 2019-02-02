@@ -2,7 +2,7 @@
 
 
 ### Getting Started
-Open your project and go to `nuget` then Search `Zarinpal` when found it install library.
+Open your project and go to `nuget` then search `Zarinpal` when found it install library.
 
 ### Requirement
  .NET 4.5.1 framework is Require
