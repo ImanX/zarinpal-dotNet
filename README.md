@@ -8,7 +8,7 @@ Open your project and go to `nuget` then Search `Zarinpal` when found it install
  .NET 4.5.1 framework is Require
 
 ### Example for Payment Request Page:
-
+```C#
    var zarinpal = ZarinPal.ZarinPal.Get();  // Create a new Instance of ZarinPal by Get() method.
    String merchantID = "71c705f8-bd37-11e6-aa0c-000c295eb8fc";  // Your merchant id.
    long amount = 1000; // This's amout of payment in TOMAN unit.
@@ -35,9 +35,12 @@ Open your project and go to `nuget` then Search `Zarinpal` when found it install
         {
             System.Diagnostics.Debug.Print("Request has failure code:" + response.Status);
         }
+        
+        
+       ```
 
 ### Example for Verfication Payment Page:
-
+```C#
         var zarinpal = ZarinPal.ZarinPal.Get();
         var response = zarinpal.VerifyPayment(this.ClientQueryString);
         if (response.IsSuccess)
@@ -49,3 +52,4 @@ Open your project and go to `nuget` then Search `Zarinpal` when found it install
             Response.Write("<script>alert('Purchase unsuccessfully')</script>");
 
         }
+```
