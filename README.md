@@ -27,7 +27,7 @@ Open your project and go to `nuget` then search `Zarinpal` when found it install
 ```
 
 
-### Example in Payemn Verification Page: 
+### Example in Payment Verification Page: 
 
 ```C#
         var zarinpal = ZarinPal.ZarinPal.Get();
