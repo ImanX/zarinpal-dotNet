@@ -3,5 +3,5 @@ C:\Users\ImanX\Documents\Visual Studio 2012\Projects\ZarinPal\ZarinPal\bin\Debug
 C:\Users\ImanX\Documents\Visual Studio 2012\Projects\ZarinPal\ZarinPal\bin\Debug\ZarinPal.pdb
 C:\Users\ImanX\Documents\Visual Studio 2012\Projects\ZarinPal\ZarinPal\obj\Debug\ZarinPal.dll
 C:\Users\ImanX\Documents\Visual Studio 2012\Projects\ZarinPal\ZarinPal\obj\Debug\ZarinPal.pdb
-C:\Users\ImanX\Desktop\ZarinPal\lib\ZarinPal.dll
-C:\Users\ImanX\Desktop\ZarinPal\lib\ZarinPal.pdb
+C:\Users\ImanX\Desktop\ZarinPal.dll
+C:\Users\ImanX\Desktop\ZarinPal.pdb

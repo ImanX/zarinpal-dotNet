@@ -22,6 +22,7 @@ namespace ZarinPal
         private static ZarinPal _ZarinPal;
         private HttpCore _HttpCore;
         private URLs _Urls;
+        private Boolean IsSandBox;
         public PaymentRequest PaymentRequest { get; private set; }
 
 
@@ -44,9 +45,20 @@ namespace ZarinPal
         }
 
 
-        public PaymentResponse GetAuthorityPayment(PaymentRequest PaymentRequest)
+        public void EnableSandboxMode()
         {
-            _Urls = new URLs(PaymentRequest.IsSandBox);
+            this.IsSandBox = true;
+        }
+
+        public void DisableSandboxMode()
+        {
+            this.IsSandBox = false;
+        }
+
+
+        public PaymentResponse InvokePaymentRequest(PaymentRequest PaymentRequest)
+        {
+            _Urls = new URLs(this.IsSandBox);
             _HttpCore.URL = _Urls.GetPaymentRequestURL();
             _HttpCore.Method = Method.POST;
             _HttpCore.Raw = PaymentRequest;
@@ -61,30 +73,17 @@ namespace ZarinPal
         }
 
 
-        public VerificationResponse VerifyPayment(String queryString)
+        public VerificationResponse InvokeVerificationPayment(VerificationRequest verificationRequest)
         {
-          
-
-         
-
-            VerificationResponse _Response = new VerificationResponse(HttpUtility.ParseQueryString(queryString));
-            if (!_Response.IsSuccess) return _Response;
-
-            _Response.Amount = PaymentRequest.Amount;
-            _Response.MerchantID = PaymentRequest.MerchantID;
 
             _HttpCore.URL = _Urls.GetVerificationURL();
             _HttpCore.Method = Method.POST;
-            _HttpCore.Raw = _Response;
+            _HttpCore.Raw = verificationRequest;
 
 
-           String response =  _HttpCore.Get();
-
+            String response =  _HttpCore.Get();
             JavaScriptSerializer j = new JavaScriptSerializer();
             VerificationResponse verification = j.Deserialize<VerificationResponse>(response);
-            verification.Amount = PaymentRequest.Amount;
-            verification.IsSuccess = true;
-            verification.MerchantID = PaymentRequest.MerchantID;
             return verification;
 
         }

@@ -11,9 +11,6 @@ namespace ZarinPal
     public class PaymentRequest
     {
 
-
-
-
         public String MerchantID { get; set; }
         public String CallbackURL { get; set; }
         public String Description { get; set; }
@@ -21,24 +18,15 @@ namespace ZarinPal
         public String Mobile { get; set; }
         public String Email { get; set; }
 
-        public Boolean IsSandBox { get; private set; }
 
-
-        public PaymentRequest(String MerchantID, long Amount, String CallbackURL, String Description, Boolean IsSandBox)
+        public PaymentRequest(String MerchantID, long Amount, String CallbackURL, String Description)
         {
             this.MerchantID = MerchantID;
             this.Amount = Amount;
             this.CallbackURL = CallbackURL;
             this.Description = Description;
-            this.IsSandBox = IsSandBox;
         }
 
-
-        public PaymentRequest(String MerchantID, long Amount, String CallbackURL, String Description)
-            : this(MerchantID, Amount, CallbackURL, Description, false)
-        {
-
-        }
 
     }
     

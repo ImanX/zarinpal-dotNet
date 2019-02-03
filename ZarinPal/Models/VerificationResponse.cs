@@ -9,23 +9,10 @@ namespace ZarinPal
     public class VerificationResponse
     {
 
-        public bool IsSuccess { get; set; }
-        public String Authority { get; set; }
+        public bool IsSuccess { get { return Status == 100; } set { this.IsSuccess = value; } }
+       // public String Authority { get; set; }
         public String RefID { get; set; }
         public int Status { get; set; }
-        public long Amount { get; set; }
-        public String MerchantID { get; set; }
 
-        public VerificationResponse(System.Collections.Specialized.NameValueCollection Collection)
-        {
-            this.IsSuccess = Collection["Status"] == "OK";
-            this.Authority = Collection["Authority"];
-
-        }
-
-        public VerificationResponse()
-        {
-
-        }
     }
 }
