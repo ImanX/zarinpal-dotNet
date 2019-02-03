@@ -9,9 +9,14 @@
 <body>
     <form id="form1" runat="server">
     <div>
-                <asp:Button ID="Button1" runat="server" Text="Payment !" OnClick="Button1_Click"  />
-
+    
     </div>
+        <p >
+    
+
+            <asp:Button ID="Button1" runat="server" Text="Payment !" OnClick="Button1_Click"  />
+
+        </p>
     </form>
 </body>
 </html>

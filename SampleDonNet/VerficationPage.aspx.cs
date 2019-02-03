@@ -9,20 +9,26 @@ public partial class VerficationPage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        ZarinPal.ZarinPal zarinPal = ZarinPal.ZarinPal.Get();
-        ZarinPal.VerificationResponse res = zarinPal.VerifyPayment(this.ClientQueryString);
-        if (res.IsSuccess)
-        {
 
-           
-            Response.Write(String.Format("<script>alert('Purchase successfully with ref transaction {0}')</script>",res.RefID));
+             var Zarinpal = ZarinPal.ZarinPal.Get();
+            String MerchantID = "71c705f8-bd37-11e6-aa0c-000c295eb8fc";
+            String Authority = HttpUtility.ParseQueryString(this.ClientQueryString)["Authority"];
+            long Amount = 100;
 
-        }
-        else
-        {
-            Response.Write("<script>alert('Purchase unsuccessfully')</script>");
 
-        }
+            var verificationRequest = new ZarinPal.VerificationRequest(MerchantID , Amount , Authority);
+
+            var verificationResponse = Zarinpal.InvokeVerificationPayment(verificationRequest);
+            if (verificationResponse.IsSuccess)
+            {
+                Response.Write(String.Format("<script>alert('Purchase successfully with ref transaction {0}')</script>", verificationResponse.RefID));
+            }
+            else {
+
+                Response.Write(String.Format("<script>alert('Purchase unsuccessfully Error code is: {0}')</script>",verificationResponse.Status));
+
+            }
+
 
     }
 }

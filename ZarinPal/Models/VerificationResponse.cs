@@ -10,7 +10,6 @@ namespace ZarinPal
     {
 
         public bool IsSuccess { get { return Status == 100; } set { this.IsSuccess = value; } }
-       // public String Authority { get; set; }
         public String RefID { get; set; }
         public int Status { get; set; }
 
