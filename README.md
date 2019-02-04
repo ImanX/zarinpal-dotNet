@@ -9,7 +9,7 @@ Requirment 4.5.1 .NET framework
 
 ### Example in Payment Request Page:
 ```C#
-         ZarinPal.ZarinPal zarinpal = ZarinPal.ZarinPal.Get();
+           ZarinPal.ZarinPal zarinpal = ZarinPal.ZarinPal.Get();
 
          String MerchantID = "71c705f8-bd37-11e6-aa0c-000c295eb8fc";
          String CallbackURL = "http://localhost:59701/VerficationPage.aspx";
@@ -30,16 +30,17 @@ Requirment 4.5.1 .NET framework
 ### Example in Payemn Verification Page: 
 
 ```C#
-        var zarinpal = ZarinPal.ZarinPal.Get();
+        
+          var zarinpal = ZarinPal.ZarinPal.Get();
             String MerchantID = "71c705f8-bd37-11e6-aa0c-000c295eb8fc";
             String Authority = HttpUtility.ParseQueryString(this.ClientQueryString)["Authority"];
             long Amount = 100;
 
 
-            var verificationRequest = new ZarinPal.VerificationRequest(MerchantID , Amount , Authority);
+            var verificationRequest = new ZarinPal.PaymentVerification(MerchantID , Amount , Authority);
 
-            var verificationResponse = zarinpal.InvokeVerificationPayment(verificationRequest);
-            if (verificationResponse.IsSuccess)
+            var verificationResponse = zarinpal.InvokePaymentVerification(verificationRequest);
+            if (verificationResponse.Status == 100)
             {
                 Response.Write(String.Format("<script>alert('Purchase successfully with ref transaction {0}')</script>", verificationResponse.RefID));
             }
@@ -48,5 +49,6 @@ Requirment 4.5.1 .NET framework
                 Response.Write(String.Format("<script>alert('Purchase unsuccessfully Error code is: {0}')</script>",verificationResponse.Status));
 
             }
+
           
 ```
