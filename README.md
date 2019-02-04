@@ -31,14 +31,27 @@ Requirment 4.5.1 .NET framework
 
 ```C#
         
-          var zarinpal = ZarinPal.ZarinPal.Get();
+        
+            var collection = HttpUtility.ParseQueryString(this.ClientQueryString);
+            String Status = collection["Status"];
+
+
+            if (Status != "OK")
+            {
+                Response.Write("<script>alert('Purchase unsuccessfully')</script>");
+                return;
+            }
+
+
+
+            var zarinpal = ZarinPal.ZarinPal.Get();
+
+            String Authority = collection["Authority"];
             String MerchantID = "71c705f8-bd37-11e6-aa0c-000c295eb8fc";
-            String Authority = HttpUtility.ParseQueryString(this.ClientQueryString)["Authority"];
             long Amount = 100;
 
 
             var verificationRequest = new ZarinPal.PaymentVerification(MerchantID , Amount , Authority);
-
             var verificationResponse = zarinpal.InvokePaymentVerification(verificationRequest);
             if (verificationResponse.Status == 100)
             {
@@ -49,6 +62,5 @@ Requirment 4.5.1 .NET framework
                 Response.Write(String.Format("<script>alert('Purchase unsuccessfully Error code is: {0}')</script>",verificationResponse.Status));
 
             }
-
           
 ```
