@@ -5,7 +5,7 @@
 Open your project and go to `nuget` then search `Zarinpal` when found it install library.
 
 ### Requirement
-Requirment 4.5.1 .NET framework
+4.5.1 .NET framework is Require
 
 ### Example in Payment Request Page:
 ```C#
