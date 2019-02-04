@@ -16,9 +16,9 @@ public partial class VerficationPage : System.Web.UI.Page
             long Amount = 100;
 
 
-            var verificationRequest = new ZarinPal.VerificationRequest(MerchantID , Amount , Authority);
+            var verificationRequest = new ZarinPal.PaymentVerification(MerchantID , Amount , Authority);
 
-            var verificationResponse = zarinpal.InvokeVerificationPayment(verificationRequest);
+            var verificationResponse = zarinpal.InvokePaymentVerification(verificationRequest);
             if (verificationResponse.IsSuccess)
             {
                 Response.Write(String.Format("<script>alert('Purchase successfully with ref transaction {0}')</script>", verificationResponse.RefID));

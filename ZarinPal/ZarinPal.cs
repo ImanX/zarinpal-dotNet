@@ -73,7 +73,7 @@ namespace ZarinPal
         }
 
 
-        public VerificationResponse InvokeVerificationPayment(VerificationRequest verificationRequest)
+        public VerificationResponse InvokePaymentVerification(PaymentVerification verificationRequest)
         {
 
             _HttpCore.URL = _Urls.GetVerificationURL();
