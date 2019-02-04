@@ -20,21 +20,19 @@ Open your project and go to `nuget` then search `Zarinpal` when found it install
 
          zarinpal.EnableSandboxMode();
          var res = zarinpal.InvokePaymentRequest(pr);
-            if (res.Status == 100) {
-                Response.Redirect(res.PaymentURL);
-            }
+         if (res.Status == 100) {
+             Response.Redirect(res.PaymentURL);
+         }
           
 ```
 
 
-### Example in Payemn Verification Page: 
+### Example in Payment Verification Page: 
 
 ```C#
-        
-        
+
             var collection = HttpUtility.ParseQueryString(this.ClientQueryString);
             String Status = collection["Status"];
-
 
             if (Status != "OK")
             {
@@ -42,17 +40,14 @@ Open your project and go to `nuget` then search `Zarinpal` when found it install
                 return;
             }
 
-
-
             var zarinpal = ZarinPal.ZarinPal.Get();
 
             String Authority = collection["Authority"];
             String MerchantID = "71c705f8-bd37-11e6-aa0c-000c295eb8fc";
             long Amount = 100;
 
-
-            var verificationRequest = new ZarinPal.PaymentVerification(MerchantID , Amount , Authority);
-            var verificationResponse = zarinpal.InvokePaymentVerification(verificationRequest);
+            var pv = new ZarinPal.PaymentVerification(MerchantID, Amount, Authority);
+            var verificationResponse = zarinpal.InvokePaymentVerification(pv);
             if (verificationResponse.Status == 100)
             {
                 Response.Write(String.Format("<script>alert('Purchase successfully with ref transaction {0}')</script>", verificationResponse.RefID));
