@@ -69,7 +69,7 @@
     <Compile Include="HttpCore.cs" />
     <Compile Include="Models\PaymentRequest.cs" />
     <Compile Include="Models\PaymentResponse.cs" />
-    <Compile Include="Models\VerificationRequest.cs" />
+    <Compile Include="Models\PaymentVerification.cs" />
     <Compile Include="Models\VerificationResponse.cs" />
     <Compile Include="URLs.cs" />
     <Compile Include="ZarinPal.cs" />
