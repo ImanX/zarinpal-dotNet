@@ -21,7 +21,6 @@ namespace ZarinPal
 
         private static ZarinPal _ZarinPal;
         private HttpCore _HttpCore;
-        private URLs _Urls;
         private Boolean IsSandBox;
         public PaymentRequest PaymentRequest { get; private set; }
 
@@ -58,8 +57,8 @@ namespace ZarinPal
 
         public PaymentResponse InvokePaymentRequest(PaymentRequest PaymentRequest)
         {
-            _Urls = new URLs(this.IsSandBox);
-            _HttpCore.URL = _Urls.GetPaymentRequestURL();
+            URLs url = new URLs(this.IsSandBox);
+            _HttpCore.URL = url.GetPaymentRequestURL();
             _HttpCore.Method = Method.POST;
             _HttpCore.Raw = PaymentRequest;
             this.PaymentRequest = PaymentRequest;
@@ -67,7 +66,7 @@ namespace ZarinPal
 
             JavaScriptSerializer j = new JavaScriptSerializer();
             PaymentResponse _Response = j.Deserialize<PaymentResponse>(response);
-            _Response.PaymentURL = _Urls.GetPaymenGatewayURL(_Response.Authority);
+            _Response.PaymentURL = url.GetPaymenGatewayURL(_Response.Authority);
 
             return _Response;
         }
@@ -75,8 +74,8 @@ namespace ZarinPal
 
         public VerificationResponse InvokePaymentVerification(PaymentVerification verificationRequest)
         {
-
-            _HttpCore.URL = _Urls.GetVerificationURL();
+            URLs url = new URLs(this.IsSandBox);
+            _HttpCore.URL = url.GetVerificationURL();
             _HttpCore.Method = Method.POST;
             _HttpCore.Raw = verificationRequest;
 
