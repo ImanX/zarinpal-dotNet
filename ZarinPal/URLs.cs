@@ -1,53 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ZarinPal
+﻿namespace ZarinPal
 {
-    class URLs
+    internal class URLs
     {
-        public Boolean IsSandBox { set; private get; }
+        private const string PAYMENT_REQ_URL = "https://{0}zarinpal.com/pg/rest/WebGate/PaymentRequest.json";
+        private const string PAYMENT_PG_URL = "https://{0}zarinpal.com/pg/StartPay/{1}/ZarinGate";
+        private const string PAYMENT_VERIFICATION_URL = "https://{0}zarinpal.com/pg/rest/WebGate/PaymentVerification.json";
+        private const string SAND_BOX = "sandbox.";
+        private const string WWW = "www.";
 
+        public bool IsSandBox { set; private get; }
 
-        private const String PAYMENT_REQ_URL = "https://{0}zarinpal.com/pg/rest/WebGate/PaymentRequest.json";
-        private const String PAYMENT_PG_URL = "https://{0}zarinpal.com/pg/StartPay/{1}/ZarinGate";
-        private const String PAYMENT_VERIFICATION_URL = "https://{0}zarinpal.com/pg/rest/WebGate/PaymentVerification.json";
-        private const String SAND_BOX = "sandbox.";
-        private const String WWW = "www.";
-
-
-
-        public URLs(Boolean IsSandBox)
+        public URLs(bool isSandbox)
         {
-            this.IsSandBox = IsSandBox;
-        }
-      
-
-
-        public String GetPaymentRequestURL()
-        {
-            return String.Format(PAYMENT_REQ_URL,  (IsSandBox ? SAND_BOX : WWW));
+            this.IsSandBox = isSandbox;
         }
 
-        public String GetPaymenGatewayURL(String Authority)
+        public string GetPaymentRequestURL()
         {
-            return String.Format(PAYMENT_PG_URL, (IsSandBox ? SAND_BOX :WWW),Authority);
-
+            return string.Format(PAYMENT_REQ_URL, (IsSandBox ? SAND_BOX : WWW));
         }
 
-        public String GetVerificationURL()
+        public string GetPaymenGatewayURL(string Authority)
         {
-            return String.Format(PAYMENT_VERIFICATION_URL, (IsSandBox ? SAND_BOX : WWW));
-
+            return string.Format(PAYMENT_PG_URL, (IsSandBox ? SAND_BOX : WWW), Authority);
         }
 
-        
- 
-       
-        
-
-
+        public string GetVerificationURL()
+        {
+            return string.Format(PAYMENT_VERIFICATION_URL, (IsSandBox ? SAND_BOX : WWW));
+        }
     }
 }

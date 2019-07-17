@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HttpCore.cs" />
+    <Compile Include="Enums\Method.cs" />
     <Compile Include="Models\PaymentRequest.cs" />
     <Compile Include="Models\PaymentResponse.cs" />
     <Compile Include="Models\PaymentVerification.cs" />

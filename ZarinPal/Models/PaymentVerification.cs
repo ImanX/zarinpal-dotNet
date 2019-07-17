@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ZarinPal
+﻿namespace ZarinPal
 {
     public class PaymentVerification
     {
         public long Amount { private set; get; }
-        public String MerchantID { private set; get; }
-        public String Authority { private set; get; }
+        public string MerchantID { private set; get; }
+        public string Authority { private set; get; }
 
-
-        public PaymentVerification(String MerchantID, long Amount, String Authority)
+        public PaymentVerification(string MerchantID, long Amount, string Authority)
         {
             this.Amount = Amount;
             this.MerchantID = MerchantID;
