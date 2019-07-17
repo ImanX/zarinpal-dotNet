@@ -15,13 +15,12 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F6BF47F1-7145-4935-8C16-8F9E2605C627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F6BF47F1-7145-4935-8C16-8F9E2605C627}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F6BF47F1-7145-4935-8C16-8F9E2605C627}.Debug|x64.ActiveCfg = Debug|x64
-		{F6BF47F1-7145-4935-8C16-8F9E2605C627}.Debug|x64.Build.0 = Debug|x64
+		{F6BF47F1-7145-4935-8C16-8F9E2605C627}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F6BF47F1-7145-4935-8C16-8F9E2605C627}.Debug|x64.Build.0 = Debug|Any CPU
 		{F6BF47F1-7145-4935-8C16-8F9E2605C627}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6BF47F1-7145-4935-8C16-8F9E2605C627}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F6BF47F1-7145-4935-8C16-8F9E2605C627}.Release|x64.ActiveCfg = Release|x64
-		{F6BF47F1-7145-4935-8C16-8F9E2605C627}.Release|x64.Build.0 = Release|x64
-		{F6BF47F1-7145-4935-8C16-8F9E2605C627}.Release|x64.Deploy.0 = Release|x64
+		{F6BF47F1-7145-4935-8C16-8F9E2605C627}.Release|x64.ActiveCfg = Release|Any CPU
+		{F6BF47F1-7145-4935-8C16-8F9E2605C627}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

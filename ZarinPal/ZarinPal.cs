@@ -1,4 +1,4 @@
-﻿using System.Web.Script.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace ZarinPal
 {
@@ -43,8 +43,7 @@ namespace ZarinPal
             this.PaymentRequest = PaymentRequest;
             string response = _HttpCore.Get();
 
-            JavaScriptSerializer j = new JavaScriptSerializer();
-            PaymentResponse _Response = j.Deserialize<PaymentResponse>(response);
+            PaymentResponse _Response = JsonConvert.DeserializeObject<PaymentResponse>(response);
             _Response.PaymentURL = url.GetPaymenGatewayURL(_Response.Authority);
 
             return _Response;
@@ -59,8 +58,7 @@ namespace ZarinPal
 
 
             string response = _HttpCore.Get();
-            JavaScriptSerializer j = new JavaScriptSerializer();
-            VerificationResponse verification = j.Deserialize<VerificationResponse>(response);
+            VerificationResponse verification = JsonConvert.DeserializeObject<VerificationResponse>(response);
             return verification;
         }
     }

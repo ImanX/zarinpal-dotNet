@@ -1,6 +1,6 @@
-﻿using System.IO;
+﻿using Newtonsoft.Json;
+using System.IO;
 using System.Net;
-using System.Web.Script.Serialization;
 
 namespace ZarinPal
 {
@@ -26,13 +26,12 @@ namespace ZarinPal
             HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(URL);
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = Method.ToString();
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls | SecurityProtocolType.Ssl3;
 
             using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
             {
                 if (Method == Method.POST)
                 {
-                    string json = new JavaScriptSerializer().Serialize(Raw);
+                    string json = JsonConvert.SerializeObject(Raw);
                     streamWriter.Write(json);
                     streamWriter.Flush();
                     streamWriter.Close();
