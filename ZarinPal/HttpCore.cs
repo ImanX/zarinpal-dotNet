@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net;
+﻿using Newtonsoft.Json;
 using System.IO;
-using System.Web.Script.Serialization;
+using System.Net;
 
 namespace ZarinPal
 {
-    class HttpCore
+    internal class HttpCore
     {
-        public String URL { get; set; }
+        public string URL { get; set; }
         public Method Method { get; set; }
-        public Object Raw { get; set; }
-       
+        public object Raw { get; set; }
 
-        public HttpCore(String URL){
+        public HttpCore(string URL)
+        {
             this.URL = URL;
         }
 
@@ -25,41 +20,30 @@ namespace ZarinPal
             //TODO....
         }
 
-
-        public String Get()
+        public string Get()
         {
-           
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(this.URL);
+
+            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(URL);
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = Method.ToString();
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls | SecurityProtocolType.Ssl3;
 
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
             {
-              if(this.Method == Method.POST){
-              string json = new JavaScriptSerializer().Serialize(Raw);
-                streamWriter.Write(json);
-                streamWriter.Flush();
-                streamWriter.Close();
-              }
+                if (Method == Method.POST)
+                {
+                    string json = JsonConvert.SerializeObject(Raw);
+                    streamWriter.Write(json);
+                    streamWriter.Flush();
+                    streamWriter.Close();
+                }
             }
 
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            HttpWebResponse httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (StreamReader streamReader = new StreamReader(httpResponse.GetResponseStream()))
             {
-                var result = streamReader.ReadToEnd();
+                string result = streamReader.ReadToEnd();
                 return result.ToString();
             }
-
         }
-        }
-
-
-
-        public enum Method
-        {
-            GET,
-            POST
-        }
-
+    }
 }
