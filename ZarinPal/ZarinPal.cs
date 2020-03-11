@@ -83,13 +83,45 @@ namespace ZarinPal
             String response =  _HttpCore.Get();
             JavaScriptSerializer j = new JavaScriptSerializer();
             VerificationResponse verification = j.Deserialize<VerificationResponse>(response);
+           
             return verification;
 
         }
 
 
+        public PaymentResponse InvokePaymentRequestWithExtra(PaymentRequestWithExtra paymentRequestWithExtra){
+            URLs url = new URLs(this.IsSandBox,true);
+            _HttpCore.URL = url.GetPaymentRequestURL();
+            _HttpCore.Method = Method.POST;
+            _HttpCore.Raw = PaymentRequest;
+            this.PaymentRequest = PaymentRequest;
+            String response = _HttpCore.Get();
+
+            JavaScriptSerializer j = new JavaScriptSerializer();
+            PaymentResponse _Response = j.Deserialize<PaymentResponse>(response);
+            _Response.PaymentURL = url.GetPaymenGatewayURL(_Response.Authority);
+
+            return _Response;
+        }
 
 
+
+
+        public VerificationResponse InvokePaymentVerificationWithExtra(PaymentVerification verificationRequest)
+        {
+            URLs url = new URLs(this.IsSandBox,true);
+            _HttpCore.URL = url.GetVerificationURL();
+            _HttpCore.Method = Method.POST;
+            _HttpCore.Raw = verificationRequest;
+
+
+            String response = _HttpCore.Get();
+            JavaScriptSerializer j = new JavaScriptSerializer();
+            VerificationResponse verification = j.Deserialize<VerificationResponse>(response);
+
+            return verification;
+
+        }
 
     }
 

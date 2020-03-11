@@ -24,10 +24,9 @@ public partial class VerficationPage : System.Web.UI.Page
 
 
             var zarinpal = ZarinPal.ZarinPal.Get();
-            zarinpal.EnableSandboxMode();
             String Authority = collection["Authority"];
             String MerchantID = "71c705f8-bd37-11e6-aa0c-000c295eb8fc";
-            long Amount = 100;
+            long Amount = 5000;
 
 
             var verificationRequest = new ZarinPal.PaymentVerification(MerchantID , Amount , Authority);
