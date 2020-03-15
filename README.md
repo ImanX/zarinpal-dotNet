@@ -9,7 +9,7 @@ Open your project and go to `nuget` then search `Zarinpal` when found it install
 
 ### Example in Payment Request Page:
 ```C#
-           ZarinPal.ZarinPal zarinpal = ZarinPal.ZarinPal.Get();
+         ZarinPal.ZarinPal zarinpal = ZarinPal.ZarinPal.Get();
 
          String MerchantID = "71c705f8-bd37-11e6-aa0c-000c295eb8fc";
          String CallbackURL = "http://localhost:59701/VerficationPage.aspx";
@@ -46,8 +46,8 @@ Open your project and go to `nuget` then search `Zarinpal` when found it install
             String MerchantID = "71c705f8-bd37-11e6-aa0c-000c295eb8fc";
             long Amount = 100;
 
-            var pv = new ZarinPal.PaymentVerification(MerchantID, Amount, Authority);
-            var verificationResponse = zarinpal.InvokePaymentVerification(pv);
+            var pv = new ZarinPal.PaymentVerification(MerchantID, Amount, Authority); 
+            var verificationResponse = zarinpal.InvokePaymentVerification(pv); // For use WithExtra method InvokePaymentVerificationWithExtra()
             if (verificationResponse.Status == 100)
             {
                 Response.Write(String.Format("<script>alert('Purchase successfully with ref transaction {0}')</script>", verificationResponse.RefID));
